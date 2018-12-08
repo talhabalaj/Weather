@@ -28,32 +28,6 @@ var isMobile = {
 function _(rl) {
 	return document.getElementById(rl);
 }
-function CurrentIPLocation() {
-	locURL = "https://freegeoip.net/json/";
-	// Setting Sample Data When in Debug Mode
-	if(DebugMode){
-		locURL = "location.json";
-	}
-	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.onreadystatechange = function() {
-	    if (this.readyState == 4 && this.status == 200) {
-	        data = JSON.parse(this.responseText);
-	        var lat = data.latitude;
-	        var long = data.longitude;
-			var CurrentWeatherURL =  CurrentWeather(lat, long);
-			var ForecastWeatherURL =  ForecastWeather(lat , long);
-			// Debug Mode 
-			if(DebugMode){
-				CurrentWeatherURL = "weather.json";
-				ForecastWeatherURL = "forecast.json";
-			}
-			GetCurrentWeather(CurrentWeatherURL);
-			GetForecastWeather(ForecastWeatherURL);	
-	    }
-	};
-	xmlhttp.open("GET", locURL, true);
-	xmlhttp.send();
-}
 function CurrentWeather(lat, long) {
 	var apikey = "8691065341cc4bc2b2030259170801";
 	var JsonUrl = "https://api.apixu.com/v1/current.json?key="+ apikey + "&q=" + lat +"," + long;
