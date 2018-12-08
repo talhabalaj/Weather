@@ -4,7 +4,7 @@ if( isMobile.any()) {
 	MobileLocation();
 } else {
 	// Getting Coodinates, City name, Country name by IP
-	CurrentIPLocation();
+	MobileLocation();
 }
 // Getting Current Weather
 function GetCurrentWeather(CurrentWeatherURL) {
